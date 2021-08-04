@@ -1,6 +1,3 @@
-"""
-This program uses EasyOCR to read a file or directory of files and output a labeled image. The output is in the labeled-images/ directory
-"""
 import argparse
 import os
 import easyocr
