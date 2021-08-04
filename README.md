@@ -46,13 +46,13 @@ To use easy_ocr_demo:
 ```
 python3 easy_ocr_demo.py images
 ```
-where image is an image file or directory of images.
+where images is an image file or directory of images.
 
 #### 2. easy_ocr_benchmark.py
 Using the pretrained EasyOCR detection and recognition models, we benchmark the throughput and latency and show the speedup after it is converted to a TensorRT engine (TRT).
  
  tor 
-| Model | Throughput | Latency |
+| Model | Throughput (fps) | Latency (ms) |
 |-------|-------------|---------------|
 | Detection | 12.386  | 84.190 |
 | Detection TRT | 24.737 | 48.990 |
@@ -72,7 +72,8 @@ TODO; edit easy ocr to allow person to pass in a flag and use the trt version
  
 #### More:
 
-To train and run your own models please see the EasyOCR instructions: []
+To train and run your own models please see the EasyOCR [instructions](https://github.com/akamboj2/EasyOCR/blob/master/custom_model.md)
+
 ## See also
  
 - [trt_pose_hand](http://github.com/NVIDIA-AI-IOT/trt_pose_hand) - Real-time hand pose estimation based on trt_pose
@@ -91,4 +92,5 @@ Below are the sources of the default [detection](https://arxiv.org/abs/1904.0194
  
 *  Baek, Y., Lee, B., Han, D., Yun, S., & Lee, H. (2019). Character region awareness for text detection. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (pp. 9365-9374).
  
-*  Xiao, Bin, Haiping Wu, and Yichen Wei. "Simple baselines for human pose estimation and tracking." Proceedings of the European Conference on Computer Vision (ECCV). 2018.__
+*  Shi, B., Bai, X., & Yao, C. (2016). An end-to-end trainable neural network for image-based sequence recognition and its application to scene text recognition. IEEE transactions on pattern analysis and machine intelligence, 39(11), 2298-2304.
+
