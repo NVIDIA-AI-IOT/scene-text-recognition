@@ -11,8 +11,15 @@ To get started with scene-text-recognition, follow these steps.
  git clone --recurse-submodules
  ```
 ### Step 2 Install Dependencies
+
+#### Downloading them individually:
  
 1. Install PyTorch and Torchvision.  To do this on NVIDIA Jetson, we recommend following [this guide](https://forums.developer.nvidia.com/t/72048)
+
+This was tested with:
+* Jetpack 4.6
+* PyTorch v1.9.0
+* torchvision v0.10.0
  
 2. Install [torch2trt](https://github.com/NVIDIA-AI-IOT/torch2trt)
  
@@ -30,10 +37,11 @@ To get started with scene-text-recognition, follow these steps.
 4. Install other miscellaneous packages 
  
     ```python
-    sudo pip3 install argparse
-    pip3 install opencv-python 
+    pip3 install argparse
+    pip3 install opencv-python
+    pip3 install python-bidi 
     ```
-    
+#### Dockerfile 
  
 ### Step 3 - Run the example files
 
@@ -66,9 +74,13 @@ python3 easy_ocr_benchmark.py
 
 This program will store the Torch2trt state dictionaries in the torch2trt_models dictionary. 
 
-#### Run the TRT version of EasyOCR:
+## Run the TRT version of EasyOCR:
 
 TODO; edit easy ocr to allow person to pass in a flag and use the trt version
+
+## Real-time Video Text Recognition with EasyOCR
+
+TODO
  
 #### More:
 
