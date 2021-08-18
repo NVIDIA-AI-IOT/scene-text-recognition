@@ -8,7 +8,7 @@ To get started with scene-text-recognition, follow these steps.
  
 ### Step 1 - Clone Repo
  ```
- git clone --recurse-submodules
+ git clone --recurse-submodules https://gitlab-master.nvidia.com/akamboj/scene-text-recognition.git
  ```
 ### Step 2 Install Dependencies
 
@@ -17,7 +17,7 @@ To get started with scene-text-recognition, follow these steps.
 1. Install PyTorch and Torchvision.  To do this on NVIDIA Jetson, we recommend following [this guide](https://forums.developer.nvidia.com/t/72048)
 
 This was tested with:
-* Jetpack 4.6
+* Jetpack 4.5.1
 * PyTorch v1.9.0
 * torchvision v0.10.0
  
@@ -42,7 +42,28 @@ This was tested with:
     pip3 install python-bidi 
     ```
 #### Dockerfile 
- 
+1. Make sure docker is setup correctly on the jetson as directed [here](https://gitlab-master.nvidia.com/dustinf/jetson-voice#docker-daemon-configuration). Nvidia should be the default docker runtime daemon.
+
+2. Build the dockerfile
+    ```
+    docker build -t scene-text-recognition .
+    ```
+3. Run the dockerfile
+    ```
+    sudo docker run -it --rm -v ~/workdir:/workdir/ --runtime nvidia --network host scene-text-recognition
+    ```
+    where workdir is the directory contianing this cloned repo, or is the clone repo.
+    
+    If you are using a realtime camera:
+    ```
+    xhost +
+    sudo docker run -it --rm -v ~/workdir:/workdir/ --runtime nvidia --network host -e DISPLAY=$DISPLAY --device /dev/video0: dev/video0 scene-text-recognition
+    ```
+    Where video0 is correct device id into the container. This can be found using:
+    ```
+    ls /dev/video*
+    ```
+
 ### Step 3 - Run the example files
 
 There are two separate demo files included: 
@@ -74,13 +95,6 @@ python3 easy_ocr_benchmark.py
 
 This program will store the Torch2trt state dictionaries in the torch2trt_models dictionary. 
 
-## Run the TRT version of EasyOCR:
-
-TODO; edit easy ocr to allow person to pass in a flag and use the trt version
-
-## Real-time Video Text Recognition with EasyOCR
-
-TODO
  
 #### More:
 
@@ -106,3 +120,14 @@ Below are the sources of the default [detection](https://arxiv.org/abs/1904.0194
  
 *  Shi, B., Bai, X., & Yao, C. (2016). An end-to-end trainable neural network for image-based sequence recognition and its application to scene text recognition. IEEE transactions on pattern analysis and machine intelligence, 39(11), 2298-2304.
 
+
+# TODO
+## Run the TRT version of EasyOCR:
+
+TODO; edit easy ocr to allow person to pass in a flag and use the trt version
+
+## Real-time Video Text Recognition with EasyOCR
+
+TODO
+
+## incorporate install steps 2 and 3 in Dockerfile
