@@ -1,4 +1,4 @@
-# Copyright (c) 2020, NVIDIA CORPORATION. All rights reserved.
+# Copyright (c) 2021, NVIDIA CORPORATION. All rights reserved.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a
 # copy of this software and associated documentation files (the "Software"),
@@ -23,34 +23,20 @@ FROM ${BASE_IMAGE}
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-#ak added
+#for video_capture.py
 RUN pip3 install --upgrade pip
 RUN pip3 install opencv-python 
-
-# Try without these packages. i think they were for cstr vedastr repo
-#RUN pip3 install addict 
-#RUN pip3 install lmdb 
-#RUN pip3 install nltk 
-#RUN pip3 install terminaltables 
-#RUN pip3 install albumentations
+RUN pip3 install traitlets
+RUN pip3 install scipy
+RUN pip3 install tifffile
 
 #for easyocr
 RUN pip3 install python-bidi
-#not sure ifone below will work if workdir is not mounted yet... maybe i'll have to pull from git and install?
-#RUN cd /workdir/torch2trt/ && python3 setup.py install 
+ENV PYTHONIOENCODING=utf-8
+
+#for torch2trt
 RUN git clone --recursive -b jax-jp4.6.1-trt7 https://github.com/akamboj2/torch2trt.git torch2trt && \
     cd torch2trt && \
     python3 setup.py install && \
     cd ../ && \
     rm -rf torch2trt
-
-RUN export PYTHONIOENCODING=utf-8
-
-#for EAST
-# RUN pip3 install shapely
-# RUN apt-get update && apt-get install libgeos-dev
-
-#for video_capture.py
-RUN pip3 install traitlets
-RUN pip3 install scipy
-RUN pip3 install tifffile
