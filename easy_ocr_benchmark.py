@@ -23,7 +23,7 @@ def convert_add(ctx):
     output._trt = add_missing_trt_tensors(ctx.network, [output])
 
 def profile(model,dummy_input):
-    iters=10
+    iters=50
     with torch.no_grad():
             # warm up
             for _ in range(10):
