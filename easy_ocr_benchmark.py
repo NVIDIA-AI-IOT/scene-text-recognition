@@ -46,7 +46,7 @@ def profile(model,dummy_input):
                 torch.cuda.current_stream().synchronize()
             t1 = time.time()
             latency = round(1000.0 * (t1 - t0) / iters, 2)
-    print("throughput: %.3f \t latency: %.3f"% (throughput,latency))
+    print("throughput: %.3f fps\t latency: %.3f ms"% (throughput,latency))
 
 if __name__ == '__main__':
 
@@ -56,7 +56,7 @@ if __name__ == '__main__':
         os.makedirs('torch2trt_models')
 
     #detector: 
-    y = torch.ones((1, 3, 224, 224),dtype=torch.float).cuda()
+    y = torch.ones((1, 3, 480, 640),dtype=torch.float).cuda()
     print("Detector:")
     print("Before Conversion:")
     profile(reader.detector, y) #throughput: 12.386 	 latency: 84.190
@@ -90,3 +90,11 @@ if __name__ == '__main__':
     print("After Conversion")
     profile(model_trt_rec,x) #throughput: 2296.110 	 latency: 0.450
     torch.save(model_trt_rec.state_dict(),'torch2trt_models/easyocr_recognize.pth')
+
+
+"""
+TODO:
+- benchmark again
+- input trt
+- look through slides' notes
+"""
