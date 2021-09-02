@@ -119,7 +119,7 @@ print("TensorRT Optimized Result",result, '\n')
 ## More:
 
 ### Different Models
-The code is designed to be able to swap in and out various detection models. As an example, try running 
+The code is designed to be able to swap in and out various detection models. As an example, view detect.py file to see where the EAST detection model was substituted in.
 
 ### Custom Training
 To train and run your own models please see the EasyOCR [instructions](https://github.com/akamboj2/EasyOCR/blob/master/custom_model.md)
@@ -146,13 +146,6 @@ Below are the sources of the default [detection](https://arxiv.org/abs/1904.0194
 *  Shi, B., Bai, X., & Yao, C. (2016). An end-to-end trainable neural network for image-based sequence recognition and its application to scene text recognition. IEEE transactions on pattern analysis and machine intelligence, 39(11), 2298-2304.
 
 
-# TODO
-## Run the TRT version of EasyOCR:
-
-TODO; edit easy ocr to allow person to pass in a flag and use the trt version
-
-## Real-time Video Text Recognition with EasyOCR
-
-TODO
-
-## incorporate install steps 2 and 3 in Dockerfile
+## Licenses
+This code is licensed under The MIT License as described [here](https://gitlab-master.nvidia.com/akamboj/scene-text-recognition/-/blob/master/LICENSE).
+The submodule EasyOCR is licesned under Apache License 2.0 as described [here](https://github.com/akamboj2/EasyOCR/blob/master/LICENSE).
