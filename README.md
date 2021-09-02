@@ -66,7 +66,7 @@ This was tested with:
 
 ### Step 3 - Run the example files
 
-There are two separate demo files included: 
+There are three separate demo files included: 
 
 #### 1. easy_ocr_demo.py
 This program uses EasyOCR to read an image or directory of images and output labeled images. The output is in the labeled-images/ directory
@@ -78,9 +78,9 @@ python3 easy_ocr_demo.py images
 where images is an image file or directory of images.
 
 #### 2. easy_ocr_benchmark.py
-Using the pretrained EasyOCR detection and recognition models, we benchmark the throughput and latency and show the speedup after it is converted to a TensorRT engine (TRT).
+Using the pretrained EasyOCR detection and recognition models, we benchmark the throughput and latency and show the speedup after it is converted to a TensorRT engine (TRT) on the Jetson AGX Xavier.
  
- tor 
+
 | Model | Throughput (fps) | Latency (ms) |
 |-------|-------------|---------------|
 | Detection | 12.386  | 84.190 |
@@ -95,10 +95,35 @@ python3 easy_ocr_benchmark.py
 
 This program will store the Torch2trt state dictionaries in the torch2trt_models dictionary. 
 
+#### 3. video_capture.py
+This program uses an attached USB camera to display a realtime video. The code will display bounding boxes around the text in the video and output the text in the terminal. Click on the video screen and type 'q' to terminate the program. 
+After plugging in the USB camera, but before running the python file, check the device id, and make sure that is passed into 'cap = cv2.VideoCapture(0)' line. By defualt we assume it is zero, change the argument in cv2.Videcapture() to the correct device id before running the program. The deviced id can be checked by doing:
+```
+ls /dev/video*
+```
+To run the program:
+```
+python3 video_capture.py
+```
  
-#### More:
+### Step 4 - Write your own code
+The easyocr package can be called and used mostly as described in the EasyOCR repo. This repo, however, also adds the use_trt flag to the reader class. Setting use_trt = True, will convert the models to tensorRT or use the converted and locally stored models, when performing detection.
 
+Example code:
+```
+import easyocr
+reader = easyocr.Reader(['en'], use_trt=True)
+result = reader.readtext('path/to/image.png')
+print("TensorRT Optimized Result",result, '\n')
+```
+## More:
+
+### Different Models
+The code is designed to be able to swap in and out various detection models. As an example, try running 
+
+### Custom Training
 To train and run your own models please see the EasyOCR [instructions](https://github.com/akamboj2/EasyOCR/blob/master/custom_model.md)
+
 
 ## See also
  
