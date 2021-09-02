@@ -40,3 +40,22 @@ RUN git clone --recursive -b jax-jp4.6.1-trt7 https://github.com/akamboj2/torch2
     python3 setup.py install && \
     cd ../ && \
     rm -rf torch2trt
+
+
+#for EAST:
+RUN apt-get update -y
+RUN apt-get install -y libgeos-dev
+RUN pip3 install shapely==1.6.4
+RUN pip3 install lanms==1.0.2
+
+#Run video capture.py
+# RUN git clone --recurse-submodules https://gitlab-master.nvidia.com/akamboj/scene-text-recognition.git
+# RUN cd EasyOCR  && \
+#     python3 setup.py install && \
+#     cd ../
+COPY . scene-text-recognition
+RUN cd scene-text-recognition/EasyOCR  && \
+    pip3 install --upgrade pip && \
+    python3 setup.py install && \
+    cd ../
+RUN python3 video_capture.py
