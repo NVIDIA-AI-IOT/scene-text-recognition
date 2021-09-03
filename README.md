@@ -2,8 +2,9 @@
  
 > Real-time scene text recognition accelerated with NVIDIA TensorRT
 
-<img src="https://gitlab-master.nvidia.com/akamboj/scene-text-recognition/-/blob/master/README_images/ruler.gif"/>
-<img src="https://gitlab-master.nvidia.com/akamboj/scene-text-recognition/-/blob/master/README_images/pringle.gif"/>
+Note: the following demos show a poor resolution due to conversion to gif. The real-time video application run with video_capture.py can display at your usb camera's full resolution and nearly the same fps as your camera's spec.
+<img src="./README_images/ruler.gif" height=300/>
+<img src="./README_images/pringle.gif" height=300/>
 
  
 ## Getting Started
