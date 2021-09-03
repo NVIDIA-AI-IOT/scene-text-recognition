@@ -1,6 +1,10 @@
 # scene-text-recogntion
  
 > Real-time scene text recognition accelerated with NVIDIA TensorRT
+
+<img src="https://gitlab-master.nvidia.com/akamboj/scene-text-recognition/-/blob/master/README_images/ruler.gif"/>
+<img src="https://gitlab-master.nvidia.com/akamboj/scene-text-recognition/-/blob/master/README_images/pringle.gif"/>
+
  
 ## Getting Started
  
