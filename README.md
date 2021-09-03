@@ -3,8 +3,8 @@
 > Real-time scene text recognition accelerated with NVIDIA TensorRT
 
 Note: the following demos show a poor resolution due to conversion to gif. The real-time video application run with video_capture.py can display at your usb camera's full resolution and nearly the same fps as your camera's spec.
-<img src="./README_images/ruler.gif" height=350/>
-<img src="./README_images/pringle_kirkland.gif" height=350/>
+<img src="./README_images/ruler.gif" height=300/>
+<img src="./README_images/pringle_kirkland.gif" height=300/>
 
  
 ## Getting Started
