@@ -41,11 +41,9 @@ This was tested with:
     ```
 4. Install other miscellaneous packages 
  
-    ```python
-    pip3 install argparse
-    pip3 install opencv-python
-    pip3 install python-bidi 
-    ```
+```shell
+pip3 install -r requirements.txt
+```
 #### Dockerfile 
 1. Make sure docker is setup correctly on the jetson as directed [here](https://gitlab-master.nvidia.com/dustinf/jetson-voice#docker-daemon-configuration). Nvidia should be the default docker runtime daemon.
 

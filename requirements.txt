@@ -1,0 +1,3 @@
+numpy==1.19.3
+opencv-python==4.5.4.58
+python-bidi==0.42
