@@ -1,3 +1,6 @@
 [submodule "EasyOCR"]
 	path = EasyOCR
 	url = https://github.com/akamboj2/EasyOCR
+[submodule "torch2trt"]
+	path = torch2trt
+	url = ./torch2trt
