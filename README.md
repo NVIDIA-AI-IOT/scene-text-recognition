@@ -5,45 +5,35 @@
 Note: the following demos show a poor resolution due to conversion to gif. The real-time video application run with video_capture.py can display at your usb camera's full resolution and nearly the same fps as your camera's spec.
 <img src="./README_images/ruler.gif" height=300/>
 <img src="./README_images/pringle_kirkland.gif" height=300/>
+ 
+## Quickstart
 
- 
-## Getting Started
- 
-To get started with scene-text-recognition, follow these steps.
- 
-### Step 1 - Clone Repo
- ```
- git clone --recurse-submodules https://gitlab-master.nvidia.com/akamboj/scene-text-recognition.git
- ```
-### Step 2 Install Dependencies
+1. Clone Repo
+```bash
+git clone --recursive git@github.com:tomek-l/nv-scene-text-recognition.git
+```
 
-#### Downloading them individually:
- 
-1. Install PyTorch and Torchvision.  To do this on NVIDIA Jetson, we recommend following [this guide](https://forums.developer.nvidia.com/t/72048)
-
-This was tested with:
-* Jetpack 4.5.1
-* PyTorch v1.9.0
-* torchvision v0.10.0
- 
-2. Install [torch2trt](https://github.com/NVIDIA-AI-IOT/torch2trt)
- 
-    ```python
-    git clone https://github.com/akamboj2/torch2trt.git  -b jax-jp4.6.1-trt7
-    cd torch2trt
-    sudo python3 setup.py install --plugins
-    ```
- 
-3. Install EasyOCR
-    ```python
-    cd EasyOCR
-    sudo python3 setup.py install 
-    ```
-4. Install other miscellaneous packages 
- 
-```shell
+2. Install pytorch, torchvision
+```bash
+wget https://raw.githubusercontent.com/tomek-l/jetson-install-pytorch/master/install_torch_v1.9.sh 
+bash install_torch_v1.9.sh
 pip3 install -r requirements.txt
 ```
+ 
+3. Install torch2trt
+
+Until this [PR](https://github.com/NVIDIA-AI-IOT/torch2trt/pull/627) is merged use Chitoku's [branch](https://github.com/chitoku/torch2trt/tree/jp4.6_tensorrt8)
+```bash
+cd torch2trt 
+sudo python3 setup.py install --plugins
+```
+
+4. Install easyOCR
+```bash
+cd EasyOCR
+sudo python3 setup.py install
+```
+
 #### Dockerfile 
 1. Make sure docker is setup correctly on the jetson as directed [here](https://gitlab-master.nvidia.com/dustinf/jetson-voice#docker-daemon-configuration). Nvidia should be the default docker runtime daemon.
 
