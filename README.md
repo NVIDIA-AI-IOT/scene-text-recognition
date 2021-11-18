@@ -3,8 +3,8 @@
 > Real-time scene text recognition accelerated with NVIDIA TensorRT
 
 Note: the following demos show a poor resolution due to conversion to gif. The real-time video application run with video_capture.py can display at your usb camera's full resolution and nearly the same fps as your camera's spec.
-<img src="./README_images/ruler.gif" height=300/>
-<img src="./README_images/pringle_kirkland.gif" height=300/>
+<img src="docs/README_images/ruler.gif" height=300/>
+<img src="docs/README_images/pringle_kirkland.gif" height=300/>
  
 ## Quickstart
 
@@ -22,7 +22,7 @@ pip3 install -r requirements.txt
  
 3. Install torch2trt
 
-Until this [PR](https://github.com/NVIDIA-AI-IOT/torch2trt/pull/627) is merged use Chitoku's [branch](https://github.com/chitoku/torch2trt/tree/jp4.6_tensorrt8)
+Until this [PR](https://github.com/NVIDIA-AI-IOT/torch2trt/pull/627) is merged use Chitoku's [branch](https://github.com/chitoku/torch2trt/tree/jp4.6_tensorrt8) containing a fix for TensorRT 8.
 ```bash
 cd torch2trt 
 sudo python3 setup.py install --plugins
