@@ -25,10 +25,9 @@ import easyocr
 import time
 import threading
 
-from jetvision.jetvision.camera import Camera
+from camera import Camera
 
-
-def put_boxes(result, imageData):
+def put_boxes(result, arr, text=False):
     color = (0, 0, 255)
     imgHeight, imgWidth, _ = imageData.shape
     thick = 2
@@ -41,40 +40,35 @@ def put_boxes(result, imageData):
 
         label = res[1]
 
-        print(label)
-
-        cv2.rectangle(imageData, top_left, btm_right, color, thick)
-        # cv2.putText(imageData, label, (top_left[0], top_left[1] - 12), 0, font_scale, color, thick)
-    if len(result) > 0:
-        print("\n")
-
+        # Draw BB
+        cv2.rectangle(arr, top_left, btm_right, color, thick)
+        
+        # Draw text
+        if text:
+            cv2.putText(arr, label, (top_left[0], top_left[1] - 12), 0, font_scale, color, thick)
 
 def main():
 
+    DISPLAY = False
+
     print("Setting up camera...")
-    cap = Camera(0, shape_in=(1920, 1080), shape_out=(224, 224))
+    cam = Camera(0, shape_in=(1920, 1080), shape_out=(224, 224))
 
     print("Loading model...")
-    reader = easyocr.Reader(["en"], use_trt=False)
+    reader = easyocr.Reader(["en"], use_trt=True)
 
-    # Read until video is completed
-    for _ in range(int(1e5)):
-        frame = cap.read()
-        # frame = cv2.resize(frame, (224,224))
-        result = reader.readtext(frame, text_threshold=0.85)
+    for _ in range(1000):
+        
+        arr = cam.read()
+        result = reader.readtext(arr, text_threshold=0.85)
         print(result)
-        # put_boxes(result, frame)
 
         # Display the resulting frame
-        cv2.imshow("Frame", frame)
-
-        # Press Q on keyboard to  exit
-        if cv2.waitKey(1) & 0xFF == ord("q"):
-            break
-
-    cv2.destroyAllWindows()
-    camera.stop()
-
+        if DISPLAY:
+            cv2.imshow("Frame", frame)
+            
+            if cv2.waitKey(1) & 0xFF == ord("q"):
+                break
 
 if __name__ == "__main__":
     main()
