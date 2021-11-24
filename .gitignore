@@ -136,3 +136,13 @@ dmypy.json
 
 # Cython debug symbols
 cython_debug/
+
+# pytorch
+*.pth
+
+# assets
+*.pdf
+*.png
+*.jpg
+*.txt
+
