@@ -3,5 +3,5 @@
 	url = https://github.com/akamboj2/EasyOCR
 [submodule "torch2trt"]
 	path = torch2trt
-	url = https://github.com/akamboj2/torch2trt
-	branch = jax-jp4.6.1-trt7
+	url = https://github.com/tomek-l/torch2trt.git
+	branch = easyocr_trt8
