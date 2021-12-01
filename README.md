@@ -4,7 +4,6 @@ Real-time scene text recognition accelerated with NVIDIA TensorRT
 
 https://user-images.githubusercontent.com/26127866/144195980-64935bb7-47d5-404f-8b89-ac99c013ca97.mp4
 
- 
 ## Quickstart
 
 1. Clone Repo
