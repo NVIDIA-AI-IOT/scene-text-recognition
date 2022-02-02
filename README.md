@@ -33,7 +33,7 @@ sudo python3 setup.py install
 ```
 
 #### Dockerfile 
-1. Make sure docker is setup correctly on the jetson as directed [here](https://gitlab-master.nvidia.com/dustinf/jetson-voice#docker-daemon-configuration). Nvidia should be the default docker runtime daemon.
+1. Make sure docker is setup correctly on the jetson as directed [here](https://github.com/dusty-nv/jetson-containers#docker-default-runtime). Specifically, read the "Docker Default Runtime" section and make sure Nvidia is the default docker runtime daemon.
 
 2. Build the dockerfile
     ```
